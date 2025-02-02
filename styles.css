@@ -1,0 +1,224 @@
+:root {
+    --primary-color: #FFC107;
+    --secondary-color: #FF9800;
+    --accent-color: #FFE082;
+    --text-color: #5D4037;
+    --background-color: #FFF8E1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    position: relative;
+    overflow: hidden;
+}
+
+.cheese-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cheese {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.3;
+    animation: float-cheese 15s linear infinite;
+    transform: rotate(0deg);
+}
+
+@keyframes float-cheese {
+    0% {
+        transform: translate(0, 100vh) rotate(0deg);
+    }
+    100% {
+        transform: translate(0, -100vh) rotate(360deg);
+    }
+}
+
+.cheese1 { left: 10%; animation-delay: -2s; }
+.cheese2 { left: 25%; animation-delay: -7s; }
+.cheese3 { left: 40%; animation-delay: -4s; }
+.cheese4 { left: 55%; animation-delay: -1s; }
+.cheese5 { left: 70%; animation-delay: -9s; }
+.cheese6 { left: 85%; animation-delay: -6s; }
+.cheese7 { left: 15%; animation-delay: -3s; }
+.cheese8 { left: 75%; animation-delay: -8s; }
+
+.hero h1, .hero .subtitle, .hero .scroll-indicator {
+    position: relative;
+    z-index: 2;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--text-color);
+    border-radius: 15px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--text-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 20px); opacity: 0; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.journey-path {
+    position: relative;
+    padding: 4rem 2rem;
+}
+
+.path-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: calc(100% - 300px); /* Stop before the finale section */
+    width: 4px;
+    background: var(--secondary-color);
+    transform: translateX(-50%);
+}
+
+.stop {
+    display: flex;
+    gap: 2rem;
+    margin: 6rem 0;
+    position: relative;
+    align-items: center;
+}
+
+.stop:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.stop-image {
+    flex: 1;
+    max-width: 500px;
+}
+
+.stop-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.stop-content {
+    flex: 1;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stop-content h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.finale {
+    text-align: center;
+    padding: 4rem 0;
+    position: relative;
+    margin-top: -100px; /* Pull the finale section up slightly */
+    background-color: var(--background-color);
+}
+
+.heart-container {
+    max-width: 300px;
+    margin: 0 auto 2rem;
+    position: relative;
+    z-index: 2; /* Ensure heart stays above the line */
+}
+
+.heart-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+    padding-top: 50px;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+    .stop {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cheese {
+        animation: none;
+        opacity: 0.1;
+    }
+}
